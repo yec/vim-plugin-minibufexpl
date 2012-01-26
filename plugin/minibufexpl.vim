@@ -750,7 +750,7 @@ augroup MiniBufExplorer
             " No spell check
             setlocal nospell
             " Restore colorcolumn for VIM >= 7.3
-            if has("colorcolumn")
+            if exists("colorcolumn")
                 setlocal colorcolumn&
             end
 
@@ -1604,7 +1604,7 @@ augroup MiniBufExplorer
 
             " Don't bother autoupdating the MBE window, and skip the FuzzyFinder window
             " (Thanks toupeira!)
-            if (bufname('%') == '-MiniBufExplorer-' || bufname('%') == '[fuf]')
+            if (bufname('%') == '-MiniBufExplorer-' || bufname('%') == '[fuf]' || bufname('%') == '')
                 " If this is the only buffer left then toggle the buffer
                 if (winbufnr(2) == -1)
                     call <SID>CycleBuffer(1)
