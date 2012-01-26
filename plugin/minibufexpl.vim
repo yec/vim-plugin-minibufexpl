@@ -4,21 +4,21 @@
 "
 " Script Info and Documentation  {{{
 "=============================================================================
-"     Copyright: Copyright (C) 2002 & 2003 Bindu Wavell 
-"                Copyright (C) 2010 Oliver Uvman
-"                Copyright (C) 2010 Danielle Church
-"                Copyright (C) 2010 Stephan Sokolow
-"                Copyright (C) 2010 & 2011 Federico Holgado
-"                Permission is hereby granted to use and distribute this code,
-"                with or without modifications, provided that this copyright
-"                notice is copied with it. Like anything else that's free,
-"                minibufexpl.vim is provided *as is* and comes with no
-"                warranty of any kind, either expressed or implied. In no
-"                event will the copyright holder be liable for any damamges
-"                resulting from the use of this software.
-" 
-"  Name Of File: minibufexpl.vim
-"   Description: Mini Buffer Explorer Vim Plugin
+"    Copyright: Copyright (C) 2002 & 2003 Bindu Wavell 
+"    		    Copyright (C) 2010 Oliver Uvman
+"    		    Copyright (C) 2010 Danielle Church
+"    		    Copyright (C) 2010 Stephan Sokolow
+"    		    Copyright (C) 2010 & 2011 Federico Holgado
+"               Permission is hereby granted to use and distribute this code,
+"               with or without modifications, provided that this copyright
+"               notice is copied with it. Like anything else that's free,
+"               minibufexpl.vim is provided *as is* and comes with no
+"               warranty of any kind, either expressed or implied. In no
+"               event will the copyright holder be liable for any damamges
+"               resulting from the use of this software.
+"
+" Name Of File: minibufexpl.vim
+"  Description: Mini Buffer Explorer Vim Plugin
 " Documentation: See minibufexpl.txt
 "
 "=============================================================================
@@ -1662,6 +1662,12 @@ endfunction
 " are cycled forward.
 "
 function! <SID>CycleBuffer(forward)
+
+            " If we are in the MBE window, switch to the next one, otherwise a new
+            " window will be created
+            if (bufname("%") == "-MiniBufExplorer-")
+                wincmd w
+            endif
 
   " The following hack handles the case where we only have one
   " window open and it is too small
